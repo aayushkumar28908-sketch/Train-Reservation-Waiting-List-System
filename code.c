@@ -1,30 +1,29 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX 5  // Maximum capacity of the queue
+#define MAX 5  
 
 char queue[MAX][50]; 
 int front = -1;
 int rear = -1;
 
-// Function to add a person to the queue
+
 void enqueue(char name[]) {
     if ((rear + 1) % MAX == front) {
-        printf("\n⚠️ Queue is Full! Cannot add more bookings.\n");
+        printf("\n Queue is Full! Cannot add more bookings.\n");
     } else {
         if (front == -1) front = 0;
         rear = (rear + 1) % MAX;
         strcpy(queue[rear], name);
-        printf("✅ %s joined the queue at position %d.\n", name, rear + 1);
+        printf(" %s joined the queue at position %d.\n", name, rear + 1);
     }
 }
 
-// Function to process the ticket (Remove from front)
 void dequeue() {
     if (front == -1) {
-        printf("\n❌ Queue is Empty! No tickets to book.\n");
+        printf("\n Queue is Empty! No tickets to book.\n");
     } else {
-        printf("\n🎟️ Ticket Successfully Booked for: %s\n", queue[front]);
+        printf("\n Ticket Successfully Booked for: %s\n", queue[front]);
         if (front == rear) {
             front = -1;
             rear = -1;
@@ -34,19 +33,19 @@ void dequeue() {
     }
 }
 
-// Function to display current waiting list
+
 void display() {
     if (front == -1) {
-        printf("\n📊 Status: Queue is empty.\n");
+        printf("\n Status: Queue is empty.\n");
     } else {
-        printf("\n--- Current Waiting List ---\n");
+        printf("\n Current Waiting List \n");
         int i = front;
         while (1) {
             printf("-> %s\n", queue[i]);
             if (i == rear) break;
             i = (i + 1) % MAX;
         }
-        printf("---------------------------\n");
+        printf("\n");
     }
 }
 
@@ -55,7 +54,7 @@ int main() {
     char name[50];
 
     while (1) {
-        printf("\n--- Railway Ticket Counter System ---");
+        printf("\n Railway Ticket Counter System ");
         printf("\n1. Join Queue (Enqueue)");
         printf("\n2. Book Ticket (Dequeue)");
         printf("\n3. View Waiting List");
